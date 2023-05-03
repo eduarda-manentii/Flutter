@@ -92,47 +92,58 @@ class _MyAppState extends State<MyApp> {
                 Text(hour),
                 Text(temp),
                 Text(descriptionToday),
-                criaTabela()
               ],
             ),
-            
+
+            Column(
+              children: [
+                Center(
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 700,
+                    height: 70,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: const Color.fromARGB(255, 0, 0, 0),
+                        style: BorderStyle.solid,
+                        width: 1.0,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                             nextDate
+                          )
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 700,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: const Color.fromARGB(255, 0, 0, 0),
+                        style: BorderStyle.solid,
+                        width: 1.0,
+                      ),
+                    ),
+                    child: Text(
+                      descriptionTomorrow
+                      ),
+                  ),
+                )
+              ],
+            ),
           ],
         ),
       ),
       
     );
     
-  }
-
-   criaTabela() {
-    return Table(
-      defaultColumnWidth: const FixedColumnWidth(150.0),
-      border: const TableBorder(
-        horizontalInside: BorderSide(
-          color: Colors.black,
-          style: BorderStyle.solid,
-          width: 1.0,
-        ),          
-      ),
-      children: [
-        _criarLinhaTable(nextDate),
-        _criarLinhaTable(descriptionTomorrow),
-      ],
-    );
-  }
-
-  _criarLinhaTable(String a) {
-    return TableRow(
-      children: a.split(',').map((name) {
-        return Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            name,
-            style: const TextStyle(fontSize: 20.0),
-          ),
-        );
-      }).toList(),
-    );
   }
 }
